@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pawfect Grooming Co.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fff8f2;
+      --surface: rgba(255,255,255,0.85);
+      --surface-strong: #fffdfb;
+      --ink: #241915;
+      --muted: #6e5b55;
+      --accent: #e97755;
+      --accent-soft: rgba(233,119,85,0.16);
+      --line: rgba(36,25,21,0.1);
+      --shadow: 0 24px 70px rgba(91, 57, 42, 0.14);
+      --success: #1f8f5f;
+      --radius: 28px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(233,119,85,0.16), transparent 28%),
+        linear-gradient(180deg, #fffaf4 0%, #fff3ea 100%);
+      min-height: 100vh;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    .shell { width: min(1180px, calc(100% - 28px)); margin: 0 auto; padding: 20px 0 48px; }
+    .topbar, .hero-card, .card, .booking-panel, .testimonial, .gallery-card {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 16px 18px; border-radius: 22px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark {
+      width: 48px; height: 48px; border-radius: 16px; display: grid; place-items: center;
+      background: linear-gradient(145deg, rgba(233,119,85,0.2), rgba(255,255,255,0.9));
+      color: var(--accent); font-size: 1.4rem;
+    }
+    .brand-copy strong, h1, h2, h3 { font-family: Fraunces, serif; }
+    .brand-copy strong { display:block; font-size:1.3rem; }
+    .brand-copy span { color: var(--muted); font-size: 0.92rem; }
+    .nav { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+    .nav a { color: var(--muted); font-size: 0.95rem; }
+    .nav .cta { background: var(--ink); color: white; padding: 12px 18px; border-radius: 999px; }
+    .hero { margin-top: 20px; display:grid; grid-template-columns: 1.08fr 0.92fr; gap: 20px; }
+    .hero-card { border-radius: 34px; padding: 30px; }
+    .eyebrow {
+      display:inline-flex; gap:10px; align-items:center; padding: 10px 14px; border-radius:999px;
+      background: rgba(255,255,255,0.8); color: var(--muted); border:1px solid var(--line); font-size:0.85rem;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+    h1 { font-size: clamp(2.8rem, 6vw, 4.9rem); line-height: 0.94; margin-top: 22px; letter-spacing: -0.05em; max-width: 9ch; }
+    .hero-copy { margin-top: 18px; color: var(--muted); line-height: 1.75; max-width: 55ch; }
+    .hero-actions { margin-top: 24px; display:flex; gap:12px; flex-wrap:wrap; }
+    .btn, .btn-secondary, .tag { border-radius: 999px; padding: 13px 20px; border: 0; cursor:pointer; }
+    .btn { background: var(--ink); color:#fff; }
+    .btn-secondary { background:#fff; border:1px solid var(--line); color: var(--ink); }
+    .hero-grid { margin-top: 24px; display:grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .mini-stat { border-radius: 22px; padding: 16px; background: rgba(255,255,255,0.82); border:1px solid var(--line); }
+    .mini-stat strong { display:block; font-size:1.5rem; }
+    .mini-stat span { color: var(--muted); font-size:0.9rem; margin-top:8px; display:block; }
+    .dog-card { border-radius: 34px; overflow:hidden; position:relative; min-height: 100%; }
+    .dog-card img { width:100%; height:100%; object-fit:cover; min-height: 520px; }
+    .dog-badge {
+      position:absolute; left:18px; right:18px; bottom:18px; padding:18px; border-radius:24px;
+      background: rgba(255,255,255,0.86); backdrop-filter: blur(10px); border:1px solid rgba(36,25,21,0.08);
+    }
+    .dog-badge p { color: var(--muted); line-height:1.6; margin-top:8px; }
+    .sections { margin-top: 22px; display:grid; gap: 22px; }
+    .section-heading { display:flex; justify-content:space-between; gap:16px; align-items:end; margin-bottom: 16px; }
+    .section-heading p { color: var(--muted); max-width: 52ch; line-height: 1.7; }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); line-height:0.98; }
+    .services, .gallery, .testimonials { display:grid; grid-template-columns: repeat(3,1fr); gap:16px; }
+    .card, .testimonial, .gallery-card { border-radius: 26px; padding: 22px; }
+    .gallery-card { padding: 0; overflow:hidden; }
+    .gallery-card img { height: 250px; width:100%; object-fit:cover; }
+    .card p, .testimonial p { color: var(--muted); line-height: 1.7; margin-top: 10px; }
+    .price { margin-top: 16px; color: var(--accent); font-weight: 700; }
+    .booking {
+      display:grid; grid-template-columns: 0.95fr 1.05fr; gap:20px;
+    }
+    .booking-panel { border-radius: 32px; padding: 24px; }
+    .booking-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 18px; }
+    .field, .select, .textarea {
+      width:100%; border-radius: 18px; border:1px solid var(--line); background:#fff; padding: 14px 15px; outline:none;
+    }
+    .textarea { min-height: 120px; resize: vertical; }
+    .full { grid-column: 1 / -1; }
+    .helper { color: var(--muted); font-size: 0.92rem; line-height: 1.65; }
+    .confirm {
+      margin-top: 16px; padding: 16px 18px; border-radius: 20px; background: rgba(31,143,95,0.1); color: var(--success);
+      border:1px solid rgba(31,143,95,0.18); display:none;
+    }
+    .confirm.show { display:block; }
+    .pitch-card { margin-top: 18px; border-radius: 24px; background: rgba(255,255,255,0.85); border:1px solid var(--line); padding: 18px; }
+    .pitch-card ul { margin-top: 12px; padding-left: 18px; color: var(--muted); line-height: 1.8; }
+    .footer { margin-top: 22px; text-align:center; color: var(--muted); padding: 12px; }
+    @media (max-width: 980px) {
+      .hero, .booking, .services, .gallery, .testimonials { grid-template-columns: 1fr; }
+      .hero-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      .shell { width: min(100% - 18px, 1180px); padding-bottom: 40px; }
+      .topbar, .hero-card, .card, .booking-panel, .testimonial { border-radius: 24px; }
+      .booking-grid { grid-template-columns: 1fr; }
+      h1 { font-size: clamp(2.3rem, 13vw, 3.6rem); }
+      .dog-card img { min-height: 360px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">🐾</div>
+        <div class="brand-copy">
+          <strong>Pawfect Grooming Co.</strong>
+          <span>Gentle grooming, happy tails, easy booking.</span>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#booking" class="cta">Book Now</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-card">
+        <div class="eyebrow"><span class="dot"></span>Local dog grooming made easier</div>
+        <h1>Fresh cuts, clean paws, and stress-free booking.</h1>
+        <p class="hero-copy">
+          A warm, modern grooming website that helps pet parents see services, trust your work, and request appointments without endless back-and-forth messages.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="#booking">Book an Appointment</a>
+          <a class="btn-secondary" href="#services">View Services</a>
+        </div>
+        <div class="hero-grid">
+          <div class="mini-stat"><strong>Online</strong><span>Booking requests any time</span></div>
+          <div class="mini-stat"><strong>Clear</strong><span>Services, pricing, and photos in one place</span></div>
+          <div class="mini-stat"><strong>Fast</strong><span>Confirmation message right after booking</span></div>
+        </div>
+      </div>
+      <aside class="dog-card hero-card">
+        <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1200&q=80" alt="Happy fluffy dog after grooming">
+        <div class="dog-badge">
+          <h3>Built to help groomers look established fast</h3>
+          <p>Show your best work, answer common questions early, and make it easy for new customers to reach out or request a time slot.</p>
+        </div>
+      </aside>
+    </section>
+
+    <div class="sections">
+      <section id="services">
+        <div class="section-heading">
+          <div><h2>Services pet owners can understand at a glance.</h2></div>
+          <p>Keep the choices simple, clear, and confidence-building. Most customers want to know what’s included, how much it costs, and how to book.</p>
+        </div>
+        <div class="services">
+          <article class="card">
+            <h3>Bath & Brush</h3>
+            <p>Warm bath, blow dry, brush-out, ear clean, and finishing spray for a clean, happy coat.</p>
+            <div class="price">From $35</div>
+          </article>
+          <article class="card">
+            <h3>Full Groom</h3>
+            <p>Bath, haircut, nails, sanitary trim, ear clean, and finishing touches tailored to breed and coat type.</p>
+            <div class="price">From $65</div>
+          </article>
+          <article class="card">
+            <h3>Puppy Intro Session</h3>
+            <p>A gentle first visit designed to make young dogs comfortable with grooming tools, touch, and routine.</p>
+            <div class="price">From $45</div>
+          </article>
+        </div>
+      </section>
+
+      <section id="gallery">
+        <div class="section-heading">
+          <div><h2>Photos that build trust fast.</h2></div>
+          <p>Dog grooming is visual. A few warm photos make people feel comfortable booking.</p>
+        </div>
+        <div class="gallery">
+          <div class="gallery-card"><img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=1200&q=80" alt="Cute dog portrait"></div>
+          <div class="gallery-card"><img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80" alt="Dog after grooming"></div>
+          <div class="gallery-card"><img src="https://images.unsplash.com/photo-1525253086316-d0c936c814f8?auto=format&fit=crop&w=1200&q=80" alt="Small dog close-up"></div>
+        </div>
+      </section>
+
+      <section class="testimonials-wrap">
+        <div class="section-heading">
+          <div><h2>Reassurance matters.</h2></div>
+          <p>Even simple placeholder reviews help you show what kind of experience customers can expect.</p>
+        </div>
+        <div class="testimonials">
+          <article class="testimonial">
+            <h3>Patient and kind</h3>
+            <p>“Our dog gets nervous, but they handled him so gently and he looked amazing after.”</p>
+          </article>
+          <article class="testimonial">
+            <h3>Easy booking</h3>
+            <p>“Loved being able to book online instead of going back and forth trying to find a time.”</p>
+          </article>
+          <article class="testimonial">
+            <h3>Looks professional</h3>
+            <p>“The photos and service list made it easy to trust them before we even called.”</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="booking" class="booking">
+        <div class="booking-panel">
+          <div class="label helper">Appointment Booking</div>
+          <h2>Request a grooming appointment.</h2>
+          <p class="helper" style="margin-top: 12px;">This demo includes a polished booking flow and instant on-page confirmation. Real email/SMS confirmations can be wired in next.</p>
+          <form id="booking-form" class="booking-grid">
+            <input class="field" type="text" name="owner" placeholder="Pet owner name" required>
+            <input class="field" type="tel" name="phone" placeholder="Phone number" required>
+            <input class="field" type="text" name="pet" placeholder="Dog name" required>
+            <select class="select" name="service" required>
+              <option value="">Select a service</option>
+              <option>Bath & Brush</option>
+              <option>Full Groom</option>
+              <option>Puppy Intro Session</option>
+              <option>Nail Trim</option>
+            </select>
+            <input class="field" type="date" name="date" required>
+            <input class="field" type="time" name="time" required>
+            <textarea class="textarea full" name="notes" placeholder="Anything important to know about your dog? Coat type, temperament, special handling, etc."></textarea>
+            <button class="btn full" type="submit">Request Appointment</button>
+          </form>
+          <div class="confirm" id="confirm-box"></div>
+        </div>
+
+        <div class="booking-panel">
+          <div class="label helper">How to pitch this helpfully</div>
+          <h2>Pitch it without sounding like a salesman.</h2>
+          <div class="pitch-card">
+            <p class="helper">Use a practical tone like this:</p>
+            <p style="margin-top: 10px; line-height: 1.8; color: var(--ink);">
+              “I noticed people searching for groomers usually want the same things right away — prices, photos, services, and an easy way to book. A simple website can make that easier for your customers and save you time answering the same questions over and over.”
+            </p>
+            <ul>
+              <li>Focus on making booking easier for customers</li>
+              <li>Talk about saving time on messages and calls</li>
+              <li>Show how photos and reviews build trust quickly</li>
+              <li>Position it as a simple tool, not extra work</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer">Pawfect Grooming Co. — demo website for local dog groomers.</footer>
+  </div>
+
+  <script>
+    const form = document.getElementById('booking-form');
+    const confirmBox = document.getElementById('confirm-box');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const owner = data.get('owner');
+      const pet = data.get('pet');
+      const service = data.get('service');
+      const date = data.get('date');
+      const time = data.get('time');
+
+      confirmBox.innerHTML = `
+        <strong>Appointment request received.</strong><br><br>
+        Thanks ${owner} — we’ve received a request for <strong>${pet}</strong> for <strong>${service}</strong> on <strong>${date}</strong> at <strong>${time}</strong>.<br>
+        A confirmation message can be sent automatically once email or SMS integration is connected.
+      `;
+      confirmBox.classList.add('show');
+      form.reset();
+      confirmBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  </script>
+</body>
+</html>
