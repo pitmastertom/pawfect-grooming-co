@@ -9,264 +9,254 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #fff8f2;
-      --surface: rgba(255,255,255,0.85);
-      --surface-strong: #fffdfb;
+      --bg: #fff7f1;
+      --bg-2: #fff0e7;
+      --surface: rgba(255,255,255,0.84);
+      --surface-strong: rgba(255,255,255,0.94);
       --ink: #241915;
-      --muted: #6e5b55;
-      --accent: #e97755;
-      --accent-soft: rgba(233,119,85,0.16);
-      --line: rgba(36,25,21,0.1);
-      --shadow: 0 24px 70px rgba(91, 57, 42, 0.14);
+      --muted: #705c54;
+      --accent: #ea7a58;
+      --accent-2: #f3b562;
+      --line: rgba(36,25,21,0.08);
+      --shadow: 0 24px 70px rgba(91,57,42,0.14);
       --success: #1f8f5f;
-      --radius: 28px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: Inter, sans-serif;
       color: var(--ink);
-      background:
-        radial-gradient(circle at top left, rgba(233,119,85,0.16), transparent 28%),
-        linear-gradient(180deg, #fffaf4 0%, #fff3ea 100%);
       min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(234,122,88,0.18), transparent 24%),
+        radial-gradient(circle at right top, rgba(243,181,98,0.18), transparent 22%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      overflow-x: hidden;
     }
     img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    button, input, select, textarea { font: inherit; }
-    .shell { width: min(1180px, calc(100% - 28px)); margin: 0 auto; padding: 20px 0 48px; }
-    .topbar, .hero-card, .card, .booking-panel, .testimonial, .gallery-card {
-      border: 1px solid var(--line);
-      background: var(--surface);
-      backdrop-filter: blur(14px);
-      box-shadow: var(--shadow);
-    }
+    a { text-decoration: none; color: inherit; }
+    button, input, textarea, select { font: inherit; }
+    .shell { width: min(1180px, calc(100% - 24px)); margin: 0 auto; padding: 18px 0 42px; }
+    .glass { border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); backdrop-filter: blur(14px); }
     .topbar {
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
       padding: 16px 18px; border-radius: 22px;
     }
-    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand { display:flex; align-items:center; gap:12px; }
     .brand-mark {
-      width: 48px; height: 48px; border-radius: 16px; display: grid; place-items: center;
-      background: linear-gradient(145deg, rgba(233,119,85,0.2), rgba(255,255,255,0.9));
-      color: var(--accent); font-size: 1.4rem;
+      width:48px; height:48px; border-radius:16px; display:grid; place-items:center;
+      background: linear-gradient(145deg, rgba(234,122,88,0.18), rgba(255,255,255,0.9));
+      color: var(--accent); font-size: 1.35rem;
     }
     .brand-copy strong, h1, h2, h3 { font-family: Fraunces, serif; }
-    .brand-copy strong { display:block; font-size:1.3rem; }
-    .brand-copy span { color: var(--muted); font-size: 0.92rem; }
-    .nav { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
-    .nav a { color: var(--muted); font-size: 0.95rem; }
-    .nav .cta { background: var(--ink); color: white; padding: 12px 18px; border-radius: 999px; }
-    .hero { margin-top: 20px; display:grid; grid-template-columns: 1.08fr 0.92fr; gap: 20px; }
-    .hero-card { border-radius: 34px; padding: 30px; }
+    .brand-copy strong { display:block; font-size: 1.28rem; }
+    .brand-copy span { color: var(--muted); font-size: 0.9rem; }
+    .nav { display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+    .nav a { color: var(--muted); font-size:0.95rem; }
+    .nav .cta, .btn {
+      background: var(--ink); color:#fff; padding: 12px 18px; border-radius: 999px; border:0; cursor:pointer;
+    }
+    .hero {
+      margin-top: 18px;
+      display:grid; grid-template-columns: 1.02fr 0.98fr; gap:18px;
+    }
+    .hero-card { border-radius: 34px; padding: 28px; }
     .eyebrow {
-      display:inline-flex; gap:10px; align-items:center; padding: 10px 14px; border-radius:999px;
-      background: rgba(255,255,255,0.8); color: var(--muted); border:1px solid var(--line); font-size:0.85rem;
+      display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px;
+      background: rgba(255,255,255,0.76); color: var(--muted); border:1px solid var(--line); font-size: 0.84rem;
     }
-    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
-    h1 { font-size: clamp(2.8rem, 6vw, 4.9rem); line-height: 0.94; margin-top: 22px; letter-spacing: -0.05em; max-width: 9ch; }
-    .hero-copy { margin-top: 18px; color: var(--muted); line-height: 1.75; max-width: 55ch; }
-    .hero-actions { margin-top: 24px; display:flex; gap:12px; flex-wrap:wrap; }
-    .btn, .btn-secondary, .tag { border-radius: 999px; padding: 13px 20px; border: 0; cursor:pointer; }
-    .btn { background: var(--ink); color:#fff; }
-    .btn-secondary { background:#fff; border:1px solid var(--line); color: var(--ink); }
-    .hero-grid { margin-top: 24px; display:grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
-    .mini-stat { border-radius: 22px; padding: 16px; background: rgba(255,255,255,0.82); border:1px solid var(--line); }
-    .mini-stat strong { display:block; font-size:1.5rem; }
-    .mini-stat span { color: var(--muted); font-size:0.9rem; margin-top:8px; display:block; }
-    .dog-card { border-radius: 34px; overflow:hidden; position:relative; min-height: 100%; }
-    .dog-card img { width:100%; height:100%; object-fit:cover; min-height: 520px; }
-    .dog-badge {
-      position:absolute; left:18px; right:18px; bottom:18px; padding:18px; border-radius:24px;
-      background: rgba(255,255,255,0.86); backdrop-filter: blur(10px); border:1px solid rgba(36,25,21,0.08);
+    .dot { width:8px; height:8px; border-radius:50%; background: var(--accent); }
+    h1 { font-size: clamp(2.8rem, 6vw, 4.8rem); line-height: 0.92; letter-spacing: -0.05em; margin-top: 22px; max-width: 8ch; }
+    .hero-copy { color: var(--muted); line-height: 1.75; margin-top: 16px; max-width: 48ch; }
+    .hero-actions { margin-top: 22px; display:flex; gap:12px; flex-wrap:wrap; }
+    .btn-secondary {
+      background: rgba(255,255,255,0.84); border:1px solid var(--line); color: var(--ink);
+      padding: 12px 18px; border-radius: 999px;
     }
-    .dog-badge p { color: var(--muted); line-height:1.6; margin-top:8px; }
-    .sections { margin-top: 22px; display:grid; gap: 22px; }
-    .section-heading { display:flex; justify-content:space-between; gap:16px; align-items:end; margin-bottom: 16px; }
-    .section-heading p { color: var(--muted); max-width: 52ch; line-height: 1.7; }
-    h2 { font-size: clamp(2rem, 4vw, 3rem); line-height:0.98; }
-    .services, .gallery, .testimonials { display:grid; grid-template-columns: repeat(3,1fr); gap:16px; }
-    .card, .testimonial, .gallery-card { border-radius: 26px; padding: 22px; }
-    .gallery-card { padding: 0; overflow:hidden; }
-    .gallery-card img { height: 250px; width:100%; object-fit:cover; }
-    .card p, .testimonial p { color: var(--muted); line-height: 1.7; margin-top: 10px; }
-    .price { margin-top: 16px; color: var(--accent); font-weight: 700; }
-    .booking {
-      display:grid; grid-template-columns: 0.95fr 1.05fr; gap:20px;
+    .quick-points { margin-top: 24px; display:grid; grid-template-columns: repeat(3,1fr); gap:12px; }
+    .mini {
+      border-radius: 22px; padding: 16px; background: rgba(255,255,255,0.82); border:1px solid var(--line);
     }
-    .booking-panel { border-radius: 32px; padding: 24px; }
-    .booking-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 18px; }
+    .mini strong { display:block; font-size:1.35rem; }
+    .mini span { display:block; margin-top:8px; color: var(--muted); font-size:0.9rem; }
+    .visual-wrap { display:grid; gap:16px; }
+    .visual-main { border-radius: 34px; overflow:hidden; min-height: 100%; position: relative; }
+    .visual-main img { width:100%; height:100%; min-height: 520px; object-fit:cover; }
+    .floating-note {
+      position:absolute; left:18px; right:18px; bottom:18px; padding: 18px; border-radius: 24px;
+      background: rgba(255,255,255,0.84); border:1px solid rgba(36,25,21,0.08); backdrop-filter: blur(10px);
+    }
+    .floating-note p { color: var(--muted); margin-top: 8px; line-height: 1.65; }
+    .ticker-section { margin-top: 22px; overflow:hidden; }
+    .ticker {
+      display:flex; gap:18px; width:max-content; animation: slide 30s linear infinite;
+    }
+    .ticker-card {
+      width: 280px; height: 220px; border-radius: 26px; overflow:hidden; flex: 0 0 auto;
+      border:1px solid var(--line); box-shadow: var(--shadow);
+    }
+    .ticker-card img { width:100%; height:100%; object-fit:cover; }
+    .sections { margin-top: 22px; display:grid; gap:22px; }
+    .strip {
+      border-radius: 30px; padding: 22px; background:
+      linear-gradient(135deg, rgba(255,255,255,0.86), rgba(255,246,240,0.92));
+    }
+    .section-heading { display:flex; justify-content:space-between; align-items:end; gap:16px; margin-bottom: 16px; }
+    .section-heading p { color: var(--muted); max-width: 42ch; line-height: 1.7; }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 0.98; }
+    .services { display:grid; grid-template-columns: repeat(4,1fr); gap:14px; }
+    .service {
+      border-radius: 24px; padding: 20px; background: var(--surface-strong); border:1px solid var(--line);
+    }
+    .service p { margin-top: 8px; color: var(--muted); line-height: 1.6; }
+    .service .price { margin-top: 14px; color: var(--accent); font-weight: 700; }
+    .contact-booking { display:grid; grid-template-columns: 0.9fr 1.1fr; gap:18px; }
+    .panel { border-radius: 30px; padding: 22px; }
+    .contact-grid { display:grid; gap:12px; margin-top: 16px; }
+    .contact-box {
+      border-radius: 20px; padding: 16px; background: rgba(255,255,255,0.9); border:1px solid var(--line);
+    }
+    .contact-box span { display:block; color: var(--muted); font-size: 0.9rem; margin-bottom: 6px; }
+    .booking-grid { display:grid; grid-template-columns: repeat(2,1fr); gap:12px; margin-top: 16px; }
     .field, .select, .textarea {
       width:100%; border-radius: 18px; border:1px solid var(--line); background:#fff; padding: 14px 15px; outline:none;
     }
-    .textarea { min-height: 120px; resize: vertical; }
+    .textarea { min-height: 110px; resize: vertical; }
     .full { grid-column: 1 / -1; }
-    .helper { color: var(--muted); font-size: 0.92rem; line-height: 1.65; }
     .confirm {
-      margin-top: 16px; padding: 16px 18px; border-radius: 20px; background: rgba(31,143,95,0.1); color: var(--success);
-      border:1px solid rgba(31,143,95,0.18); display:none;
+      margin-top: 14px; padding: 16px 18px; border-radius: 20px; background: rgba(31,143,95,0.1);
+      color: var(--success); border:1px solid rgba(31,143,95,0.18); display:none;
     }
     .confirm.show { display:block; }
-    .pitch-card { margin-top: 18px; border-radius: 24px; background: rgba(255,255,255,0.85); border:1px solid var(--line); padding: 18px; }
-    .pitch-card ul { margin-top: 12px; padding-left: 18px; color: var(--muted); line-height: 1.8; }
+    .tiny { color: var(--muted); font-size: 0.92rem; line-height: 1.65; }
     .footer { margin-top: 22px; text-align:center; color: var(--muted); padding: 12px; }
-    @media (max-width: 980px) {
-      .hero, .booking, .services, .gallery, .testimonials { grid-template-columns: 1fr; }
-      .hero-grid { grid-template-columns: 1fr; }
+    @keyframes slide {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
     }
-    @media (max-width: 720px) {
-      .shell { width: min(100% - 18px, 1180px); padding-bottom: 40px; }
-      .topbar, .hero-card, .card, .booking-panel, .testimonial { border-radius: 24px; }
+    @media (max-width: 1020px) {
+      .hero, .contact-booking, .services { grid-template-columns: 1fr; }
+      .quick-points { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 18px, 1180px); padding-bottom: 34px; }
+      .topbar, .hero-card, .panel, .strip { border-radius: 24px; }
       .booking-grid { grid-template-columns: 1fr; }
-      h1 { font-size: clamp(2.3rem, 13vw, 3.6rem); }
-      .dog-card img { min-height: 360px; }
+      .services { grid-template-columns: 1fr; }
+      h1 { font-size: clamp(2.25rem, 14vw, 3.7rem); }
+      .visual-main img { min-height: 360px; }
+      .ticker-card { width: 220px; height: 180px; }
     }
   </style>
 </head>
 <body>
   <div class="shell">
-    <header class="topbar">
+    <header class="topbar glass">
       <div class="brand">
-        <div class="brand-mark">🐾</div>
+        <div class="brand-mark">🐶</div>
         <div class="brand-copy">
           <strong>Pawfect Grooming Co.</strong>
-          <span>Gentle grooming, happy tails, easy booking.</span>
+          <span>Clean cuts. Happy dogs. Easy booking.</span>
         </div>
       </div>
       <nav class="nav">
         <a href="#services">Services</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#booking" class="cta">Book Now</a>
+        <a href="#contact">Contact</a>
+        <a href="#booking" class="cta">Book</a>
       </nav>
     </header>
 
     <section class="hero">
-      <div class="hero-card">
-        <div class="eyebrow"><span class="dot"></span>Local dog grooming made easier</div>
-        <h1>Fresh cuts, clean paws, and stress-free booking.</h1>
-        <p class="hero-copy">
-          A warm, modern grooming website that helps pet parents see services, trust your work, and request appointments without endless back-and-forth messages.
-        </p>
+      <div class="hero-card glass">
+        <div class="eyebrow"><span class="dot"></span>Dog grooming made simple</div>
+        <h1>Fresh looks for happy dogs.</h1>
+        <p class="hero-copy">Show your work, get more bookings, and give customers one easy place to contact you.</p>
         <div class="hero-actions">
-          <a class="btn" href="#booking">Book an Appointment</a>
-          <a class="btn-secondary" href="#services">View Services</a>
+          <a class="btn" href="#booking">Book Now</a>
+          <a class="btn-secondary" href="#contact">Contact</a>
         </div>
-        <div class="hero-grid">
-          <div class="mini-stat"><strong>Online</strong><span>Booking requests any time</span></div>
-          <div class="mini-stat"><strong>Clear</strong><span>Services, pricing, and photos in one place</span></div>
-          <div class="mini-stat"><strong>Fast</strong><span>Confirmation message right after booking</span></div>
+        <div class="quick-points">
+          <div class="mini"><strong>Online</strong><span>Booking requests</span></div>
+          <div class="mini"><strong>Photos</strong><span>Show your best grooms</span></div>
+          <div class="mini"><strong>Simple</strong><span>Fast contact info</span></div>
         </div>
       </div>
-      <aside class="dog-card hero-card">
-        <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1200&q=80" alt="Happy fluffy dog after grooming">
-        <div class="dog-badge">
-          <h3>Built to help groomers look established fast</h3>
-          <p>Show your best work, answer common questions early, and make it easy for new customers to reach out or request a time slot.</p>
+      <div class="visual-wrap">
+        <div class="visual-main glass">
+          <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1400&q=80" alt="Happy dog after grooming">
+          <div class="floating-note">
+            <h3>Less talking. More booking.</h3>
+            <p>Customers can quickly see services, photos, and how to reach you.</p>
+          </div>
         </div>
-      </aside>
+      </div>
+    </section>
+
+    <section class="ticker-section">
+      <div class="ticker">
+        <div class="ticker-card"><img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=1200&q=80" alt="Dog 1"></div>
+        <div class="ticker-card"><img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80" alt="Dog 2"></div>
+        <div class="ticker-card"><img src="https://images.unsplash.com/photo-1525253086316-d0c936c814f8?auto=format&fit=crop&w=1200&q=80" alt="Dog 3"></div>
+        <div class="ticker-card"><img src="https://images.unsplash.com/photo-1518715308788-3005759c95a5?auto=format&fit=crop&w=1200&q=80" alt="Dog 4"></div>
+        <div class="ticker-card"><img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=1200&q=80" alt="Dog 5"></div>
+        <div class="ticker-card"><img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=1200&q=80" alt="Dog 1 duplicate"></div>
+        <div class="ticker-card"><img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80" alt="Dog 2 duplicate"></div>
+        <div class="ticker-card"><img src="https://images.unsplash.com/photo-1525253086316-d0c936c814f8?auto=format&fit=crop&w=1200&q=80" alt="Dog 3 duplicate"></div>
+      </div>
     </section>
 
     <div class="sections">
-      <section id="services">
+      <section id="services" class="strip glass">
         <div class="section-heading">
-          <div><h2>Services pet owners can understand at a glance.</h2></div>
-          <p>Keep the choices simple, clear, and confidence-building. Most customers want to know what’s included, how much it costs, and how to book.</p>
+          <div><h2>Services</h2></div>
+          <p>Simple options customers can understand fast.</p>
         </div>
         <div class="services">
-          <article class="card">
-            <h3>Bath & Brush</h3>
-            <p>Warm bath, blow dry, brush-out, ear clean, and finishing spray for a clean, happy coat.</p>
-            <div class="price">From $35</div>
-          </article>
-          <article class="card">
-            <h3>Full Groom</h3>
-            <p>Bath, haircut, nails, sanitary trim, ear clean, and finishing touches tailored to breed and coat type.</p>
-            <div class="price">From $65</div>
-          </article>
-          <article class="card">
-            <h3>Puppy Intro Session</h3>
-            <p>A gentle first visit designed to make young dogs comfortable with grooming tools, touch, and routine.</p>
-            <div class="price">From $45</div>
-          </article>
+          <article class="service"><h3>Bath & Brush</h3><p>Clean, dry, brushed.</p><div class="price">From $35</div></article>
+          <article class="service"><h3>Full Groom</h3><p>Bath, trim, nails, finish.</p><div class="price">From $65</div></article>
+          <article class="service"><h3>Puppy Intro</h3><p>Gentle first grooming visit.</p><div class="price">From $45</div></article>
+          <article class="service"><h3>Nail Trim</h3><p>Quick tidy-up service.</p><div class="price">From $20</div></article>
         </div>
       </section>
 
-      <section id="gallery">
-        <div class="section-heading">
-          <div><h2>Photos that build trust fast.</h2></div>
-          <p>Dog grooming is visual. A few warm photos make people feel comfortable booking.</p>
+      <section class="contact-booking">
+        <div id="contact" class="panel glass">
+          <div class="eyebrow"><span class="dot"></span>Contact</div>
+          <h2 style="margin-top:14px;">Easy ways to reach you.</h2>
+          <div class="contact-grid">
+            <div class="contact-box"><span>Phone</span><strong>(555) 123-4567</strong></div>
+            <div class="contact-box"><span>Email</span><strong>hello@pawfectgrooming.com</strong></div>
+            <div class="contact-box"><span>Address</span><strong>123 Main Street, Your City</strong></div>
+            <div class="contact-box"><span>Hours</span><strong>Mon–Sat · 9:00 AM – 6:00 PM</strong></div>
+          </div>
+          <p class="tiny" style="margin-top: 16px;">Perfect for customers who want to call, text, or book online.</p>
         </div>
-        <div class="gallery">
-          <div class="gallery-card"><img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=1200&q=80" alt="Cute dog portrait"></div>
-          <div class="gallery-card"><img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1200&q=80" alt="Dog after grooming"></div>
-          <div class="gallery-card"><img src="https://images.unsplash.com/photo-1525253086316-d0c936c814f8?auto=format&fit=crop&w=1200&q=80" alt="Small dog close-up"></div>
-        </div>
-      </section>
 
-      <section class="testimonials-wrap">
-        <div class="section-heading">
-          <div><h2>Reassurance matters.</h2></div>
-          <p>Even simple placeholder reviews help you show what kind of experience customers can expect.</p>
-        </div>
-        <div class="testimonials">
-          <article class="testimonial">
-            <h3>Patient and kind</h3>
-            <p>“Our dog gets nervous, but they handled him so gently and he looked amazing after.”</p>
-          </article>
-          <article class="testimonial">
-            <h3>Easy booking</h3>
-            <p>“Loved being able to book online instead of going back and forth trying to find a time.”</p>
-          </article>
-          <article class="testimonial">
-            <h3>Looks professional</h3>
-            <p>“The photos and service list made it easy to trust them before we even called.”</p>
-          </article>
-        </div>
-      </section>
-
-      <section id="booking" class="booking">
-        <div class="booking-panel">
-          <div class="label helper">Appointment Booking</div>
-          <h2>Request a grooming appointment.</h2>
-          <p class="helper" style="margin-top: 12px;">This demo includes a polished booking flow and instant on-page confirmation. Real email/SMS confirmations can be wired in next.</p>
+        <div id="booking" class="panel glass">
+          <div class="eyebrow"><span class="dot"></span>Booking</div>
+          <h2 style="margin-top:14px;">Book an appointment</h2>
+          <p class="tiny" style="margin-top:10px;">Request a time and get an instant confirmation on the page.</p>
           <form id="booking-form" class="booking-grid">
-            <input class="field" type="text" name="owner" placeholder="Pet owner name" required>
-            <input class="field" type="tel" name="phone" placeholder="Phone number" required>
+            <input class="field" type="text" name="owner" placeholder="Your name" required>
+            <input class="field" type="tel" name="phone" placeholder="Phone" required>
             <input class="field" type="text" name="pet" placeholder="Dog name" required>
             <select class="select" name="service" required>
-              <option value="">Select a service</option>
+              <option value="">Service</option>
               <option>Bath & Brush</option>
               <option>Full Groom</option>
-              <option>Puppy Intro Session</option>
+              <option>Puppy Intro</option>
               <option>Nail Trim</option>
             </select>
             <input class="field" type="date" name="date" required>
             <input class="field" type="time" name="time" required>
-            <textarea class="textarea full" name="notes" placeholder="Anything important to know about your dog? Coat type, temperament, special handling, etc."></textarea>
-            <button class="btn full" type="submit">Request Appointment</button>
+            <textarea class="textarea full" name="notes" placeholder="Notes"></textarea>
+            <button class="btn full" type="submit">Request Booking</button>
           </form>
           <div class="confirm" id="confirm-box"></div>
-        </div>
-
-        <div class="booking-panel">
-          <div class="label helper">How to pitch this helpfully</div>
-          <h2>Pitch it without sounding like a salesman.</h2>
-          <div class="pitch-card">
-            <p class="helper">Use a practical tone like this:</p>
-            <p style="margin-top: 10px; line-height: 1.8; color: var(--ink);">
-              “I noticed people searching for groomers usually want the same things right away — prices, photos, services, and an easy way to book. A simple website can make that easier for your customers and save you time answering the same questions over and over.”
-            </p>
-            <ul>
-              <li>Focus on making booking easier for customers</li>
-              <li>Talk about saving time on messages and calls</li>
-              <li>Show how photos and reviews build trust quickly</li>
-              <li>Position it as a simple tool, not extra work</li>
-            </ul>
-          </div>
         </div>
       </section>
     </div>
 
-    <footer class="footer">Pawfect Grooming Co. — demo website for local dog groomers.</footer>
+    <footer class="footer">Pawfect Grooming Co.</footer>
   </div>
 
   <script>
@@ -283,9 +273,8 @@
       const time = data.get('time');
 
       confirmBox.innerHTML = `
-        <strong>Appointment request received.</strong><br><br>
-        Thanks ${owner} — we’ve received a request for <strong>${pet}</strong> for <strong>${service}</strong> on <strong>${date}</strong> at <strong>${time}</strong>.<br>
-        A confirmation message can be sent automatically once email or SMS integration is connected.
+        <strong>Request received.</strong><br><br>
+        Thanks ${owner}. We got your booking request for <strong>${pet}</strong> (${service}) on <strong>${date}</strong> at <strong>${time}</strong>.
       `;
       confirmBox.classList.add('show');
       form.reset();
