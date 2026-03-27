@@ -358,6 +358,45 @@
         </div>
       </section>
 
+      <section id="booking" class="strip glass">
+        <div class="section-heading">
+          <div><h2>Book an Appointment</h2></div>
+          <p>Choose a service, pick a time, and get instant confirmation on the page.</p>
+        </div>
+        <div class="panel" style="background: rgba(255,255,255,0.58); border:1px solid var(--line);">
+          <form id="booking-form" class="booking-grid" style="margin-top: 0;">
+            <input class="field" type="text" name="petName" placeholder="Pet name" required>
+            <select class="select" name="petType" required>
+              <option value="">Pet type</option>
+              <option>Dog</option>
+              <option>Cat</option>
+              <option>Other</option>
+            </select>
+            <input class="field" type="text" name="breed" placeholder="Breed" required>
+            <select class="select" name="service" required>
+              <option value="">Service</option>
+              <option>Bath & Brush</option>
+              <option>Full Groom</option>
+              <option>Puppy Intro</option>
+              <option>Nail Trim</option>
+            </select>
+            <select class="select" name="groomer" required>
+              <option value="">Preferred groomer</option>
+              <option>Any available</option>
+              <option>Maria</option>
+              <option>Jess</option>
+              <option>Andre</option>
+            </select>
+            <input class="field" type="date" name="date" required>
+            <input class="field" type="time" name="time" required>
+            <input class="field" type="tel" name="phone" placeholder="Phone" required>
+            <textarea class="textarea full" name="notes" placeholder="Behavior notes, coat condition, or special requests"></textarea>
+            <button class="btn full" type="submit">Book Grooming Appointment</button>
+          </form>
+          <div class="confirm" id="confirm-box"></div>
+        </div>
+      </section>
+
       <section id="dashboard" class="strip glass">
         <div class="section-heading">
           <div><h2>Available Slots Today</h2></div>
@@ -401,54 +440,18 @@
         </div>
       </section>
 
-      <section class="contact-booking">
-        <div id="contact" class="panel glass">
-          <div class="eyebrow"><span class="dot"></span>Contact</div>
-          <h2 style="margin-top:12px;">Easy ways to reach you.</h2>
-          <div class="contact-grid">
-            <div class="contact-box"><span>Phone</span><strong>(555) 123-4567</strong></div>
-            <div class="contact-box"><span>Email</span><strong>hello@k9kutsgrooming.com</strong></div>
-            <div class="contact-box"><span>Address</span><strong>123 Main Street, Your City</strong></div>
-            <div class="contact-box"><span>Hours</span><strong>Mon–Sat · 9:00 AM – 6:00 PM</strong></div>
-          </div>
-          <p class="tiny" style="margin-top: 14px;">A clean marketing presence and a practical booking tool in one.</p>
+      <section id="contact" class="strip glass">
+        <div class="section-heading">
+          <div><h2>Contact</h2></div>
+          <p>Easy ways to reach K-9 Kuts Grooming if customers prefer to call, email, or stop by.</p>
         </div>
-
-        <div id="booking" class="panel glass">
-          <div class="eyebrow"><span class="dot"></span>Booking</div>
-          <h2 style="margin-top:12px;">Book an appointment</h2>
-          <p class="tiny" style="margin-top:8px;">Choose a service, pick a time, and get instant confirmation on the page.</p>
-          <form id="booking-form" class="booking-grid">
-            <input class="field" type="text" name="petName" placeholder="Pet name" required>
-            <select class="select" name="petType" required>
-              <option value="">Pet type</option>
-              <option>Dog</option>
-              <option>Cat</option>
-              <option>Other</option>
-            </select>
-            <input class="field" type="text" name="breed" placeholder="Breed" required>
-            <select class="select" name="service" required>
-              <option value="">Service</option>
-              <option>Bath & Brush</option>
-              <option>Full Groom</option>
-              <option>Puppy Intro</option>
-              <option>Nail Trim</option>
-            </select>
-            <select class="select" name="groomer" required>
-              <option value="">Preferred groomer</option>
-              <option>Any available</option>
-              <option>Maria</option>
-              <option>Jess</option>
-              <option>Andre</option>
-            </select>
-            <input class="field" type="date" name="date" required>
-            <input class="field" type="time" name="time" required>
-            <input class="field" type="tel" name="phone" placeholder="Phone" required>
-            <textarea class="textarea full" name="notes" placeholder="Behavior notes, coat condition, or special requests"></textarea>
-            <button class="btn full" type="submit">Book Grooming Appointment</button>
-          </form>
-          <div class="confirm" id="confirm-box"></div>
+        <div class="contact-grid">
+          <div class="contact-box"><span>Phone</span><strong>(555) 123-4567</strong></div>
+          <div class="contact-box"><span>Email</span><strong>hello@k9kutsgrooming.com</strong></div>
+          <div class="contact-box"><span>Address</span><strong>123 Main Street, Your City</strong></div>
+          <div class="contact-box"><span>Hours</span><strong>Mon–Sat · 9:00 AM – 6:00 PM</strong></div>
         </div>
+        <p class="tiny" style="margin-top: 14px;">A clean marketing presence and a practical booking tool in one.</p>
       </section>
     </div>
 
