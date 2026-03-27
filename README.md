@@ -1,4 +1,4 @@
-# Pawfect Grooming Co.
+# K9Kuts.
 
 A polished demo website for a local dog groomer.
 
