@@ -20,6 +20,8 @@
       --line: rgba(36,25,21,0.08);
       --shadow: 0 24px 70px rgba(91,57,42,0.14);
       --success: #1f8f5f;
+      --warning: #c26c15;
+      --danger: #b74234;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -111,11 +113,11 @@
     .service .price { margin-top: 14px; color: var(--accent); font-weight: 700; }
     .contact-booking { display:grid; grid-template-columns: 0.9fr 1.1fr; gap:18px; }
     .panel { border-radius: 30px; padding: 22px; }
-    .contact-grid { display:grid; gap:12px; margin-top: 16px; }
-    .contact-box {
+    .contact-grid, .stat-grid, .appointment-list, .waitlist, .score-list { display:grid; gap:12px; margin-top: 16px; }
+    .contact-box, .stat-card, .appointment-item, .waitlist-item, .score-item {
       border-radius: 20px; padding: 16px; background: rgba(255,255,255,0.9); border:1px solid var(--line);
     }
-    .contact-box span { display:block; color: var(--muted); font-size: 0.9rem; margin-bottom: 6px; }
+    .contact-box span, .stat-card span, .score-item span { display:block; color: var(--muted); font-size: 0.9rem; margin-bottom: 6px; }
     .booking-grid { display:grid; grid-template-columns: repeat(2,1fr); gap:12px; margin-top: 16px; }
     .field, .select, .textarea {
       width:100%; border-radius: 18px; border:1px solid var(--line); background:#fff; padding: 14px 15px; outline:none;
@@ -128,23 +130,42 @@
     }
     .confirm.show { display:block; }
     .tiny { color: var(--muted); font-size: 0.92rem; line-height: 1.65; }
+    .dashboard-grid { display:grid; grid-template-columns: 1.05fr 0.95fr; gap:18px; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat-card strong { font-size: 1.8rem; display:block; }
+    .appointment-item, .waitlist-item {
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+    }
+    .appointment-meta, .waitlist-meta { color: var(--muted); font-size: 0.92rem; margin-top: 4px; }
+    .badge {
+      display:inline-flex; align-items:center; gap:8px; padding: 8px 12px; border-radius: 999px;
+      font-size: 0.84rem; font-weight: 600; border:1px solid transparent;
+    }
+    .badge-confirmed { background: rgba(31,143,95,0.1); color: var(--success); border-color: rgba(31,143,95,0.16); }
+    .badge-pending { background: rgba(243,181,98,0.16); color: var(--warning); border-color: rgba(194,108,21,0.14); }
+    .badge-risk { background: rgba(183,66,52,0.11); color: var(--danger); border-color: rgba(183,66,52,0.16); }
+    .score-item { display:flex; justify-content:space-between; align-items:flex-start; gap:14px; }
+    .score-pill {
+      min-width: 58px; text-align:center; padding: 10px 12px; border-radius: 14px;
+      font-weight: 700; background: rgba(36,25,21,0.06);
+    }
     .footer { margin-top: 22px; text-align:center; color: var(--muted); padding: 12px; }
     @keyframes slide {
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
     }
     @media (max-width: 1020px) {
-      .hero, .contact-booking, .services { grid-template-columns: 1fr; }
-      .quick-points { grid-template-columns: 1fr; }
+      .hero, .contact-booking, .services, .dashboard-grid { grid-template-columns: 1fr; }
+      .quick-points, .stat-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 760px) {
       .shell { width: min(100% - 18px, 1180px); padding-bottom: 34px; }
       .topbar, .hero-card, .panel, .strip { border-radius: 24px; }
-      .booking-grid { grid-template-columns: 1fr; }
-      .services { grid-template-columns: 1fr; }
+      .booking-grid, .services { grid-template-columns: 1fr; }
       h1 { font-size: clamp(2.25rem, 14vw, 3.7rem); }
       .visual-main img { min-height: 360px; }
       .ticker-card { width: 220px; height: 180px; }
+      .appointment-item, .waitlist-item, .score-item { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -160,6 +181,7 @@
       </div>
       <nav class="nav">
         <a href="#services">Services</a>
+        <a href="#dashboard">Dashboard</a>
         <a href="#contact">Contact</a>
         <a href="#booking" class="cta">Book</a>
       </nav>
@@ -169,23 +191,23 @@
       <div class="hero-card glass">
         <div class="eyebrow"><span class="dot"></span>Dog grooming made simple</div>
         <h1>Fresh looks for happy dogs.</h1>
-        <p class="hero-copy">Show your work, get more bookings, and give customers one easy place to contact you.</p>
+        <p class="hero-copy">Now more than a marketing site: customers can request appointments and the team can track confirmed, pending, waitlist, and high-risk bookings in one place.</p>
         <div class="hero-actions">
           <a class="btn" href="#booking">Book Now</a>
-          <a class="btn-secondary" href="#contact">Contact</a>
+          <a class="btn-secondary" href="#dashboard">View Dashboard</a>
         </div>
         <div class="quick-points">
-          <div class="mini"><strong>Online</strong><span>Booking requests</span></div>
-          <div class="mini"><strong>Photos</strong><span>Show your best grooms</span></div>
-          <div class="mini"><strong>Simple</strong><span>Fast contact info</span></div>
+          <div class="mini"><strong>Booking</strong><span>Real intake fields</span></div>
+          <div class="mini"><strong>Dashboard</strong><span>Today’s schedule at a glance</span></div>
+          <div class="mini"><strong>Risk Flags</strong><span>Spot issues before the appointment</span></div>
         </div>
       </div>
       <div class="visual-wrap">
         <div class="visual-main glass">
           <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=1400&q=80" alt="Happy dog after grooming">
           <div class="floating-note">
-            <h3>Less talking. More booking.</h3>
-            <p>Customers can quickly see services, photos, and how to reach you.</p>
+            <h3>Less back-and-forth. More filled slots.</h3>
+            <p>Customers can book with the details you actually need, and the salon gets a cleaner picture of the day’s appointments.</p>
           </div>
         </div>
       </div>
@@ -208,13 +230,64 @@
       <section id="services" class="strip glass">
         <div class="section-heading">
           <div><h2>Services</h2></div>
-          <p>Simple options customers can understand fast.</p>
+          <p>Simple options customers can understand fast, with a booking flow that captures the salon’s real intake needs.</p>
         </div>
         <div class="services">
           <article class="service"><h3>Bath & Brush</h3><p>Clean, dry, brushed.</p><div class="price">From $35</div></article>
           <article class="service"><h3>Full Groom</h3><p>Bath, trim, nails, finish.</p><div class="price">From $65</div></article>
           <article class="service"><h3>Puppy Intro</h3><p>Gentle first grooming visit.</p><div class="price">From $45</div></article>
           <article class="service"><h3>Nail Trim</h3><p>Quick tidy-up service.</p><div class="price">From $20</div></article>
+        </div>
+      </section>
+
+      <section id="dashboard" class="strip glass">
+        <div class="section-heading">
+          <div><h2>Admin Dashboard</h2></div>
+          <p>A simple operations view for the salon team: today’s bookings, risk scores, confirmed clients, pending confirmations, and waitlist demand.</p>
+        </div>
+        <div class="dashboard-grid">
+          <div class="panel" style="background: rgba(255,255,255,0.58); border:1px solid var(--line);">
+            <div class="eyebrow"><span class="dot"></span>Daily overview</div>
+            <div class="stat-grid">
+              <div class="stat-card">
+                <span>Today’s bookings</span>
+                <strong id="stat-bookings">4</strong>
+              </div>
+              <div class="stat-card">
+                <span>Risk scores flagged</span>
+                <strong id="stat-risk">1</strong>
+              </div>
+              <div class="stat-card">
+                <span>Confirmed clients</span>
+                <strong id="stat-confirmed">2</strong>
+              </div>
+              <div class="stat-card">
+                <span>Pending confirmations</span>
+                <strong id="stat-pending">1</strong>
+              </div>
+              <div class="stat-card full">
+                <span>Waitlist clients</span>
+                <strong id="stat-waitlist">2</strong>
+              </div>
+            </div>
+
+            <div class="appointment-list" style="margin-top: 18px;">
+              <h3>Today’s Appointments</h3>
+              <div id="appointments-list"></div>
+            </div>
+          </div>
+
+          <div class="panel" style="background: rgba(255,255,255,0.58); border:1px solid var(--line);">
+            <div class="eyebrow"><span class="dot"></span>Client risk and overflow</div>
+            <div class="score-list">
+              <h3>Risk Scores</h3>
+              <div id="score-list"></div>
+            </div>
+            <div class="waitlist">
+              <h3>Waitlist Clients</h3>
+              <div id="waitlist-list"></div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -228,17 +301,22 @@
             <div class="contact-box"><span>Address</span><strong>123 Main Street, Your City</strong></div>
             <div class="contact-box"><span>Hours</span><strong>Mon–Sat · 9:00 AM – 6:00 PM</strong></div>
           </div>
-          <p class="tiny" style="margin-top: 16px;">Perfect for customers who want to call, text, or book online.</p>
+          <p class="tiny" style="margin-top: 16px;">This now works better as a business tool: booking intake on the front end, scheduling visibility on the back end.</p>
         </div>
 
         <div id="booking" class="panel glass">
           <div class="eyebrow"><span class="dot"></span>Booking</div>
           <h2 style="margin-top:14px;">Book an appointment</h2>
-          <p class="tiny" style="margin-top:10px;">Request a time and get an instant confirmation on the page.</p>
+          <p class="tiny" style="margin-top:10px;">Capture the real details the salon needs before confirming a slot.</p>
           <form id="booking-form" class="booking-grid">
-            <input class="field" type="text" name="owner" placeholder="Your name" required>
-            <input class="field" type="tel" name="phone" placeholder="Phone" required>
-            <input class="field" type="text" name="pet" placeholder="Dog name" required>
+            <input class="field" type="text" name="petName" placeholder="Pet name" required>
+            <select class="select" name="petType" required>
+              <option value="">Pet type</option>
+              <option>Dog</option>
+              <option>Cat</option>
+              <option>Other</option>
+            </select>
+            <input class="field" type="text" name="breed" placeholder="Breed" required>
             <select class="select" name="service" required>
               <option value="">Service</option>
               <option>Bath & Brush</option>
@@ -246,9 +324,17 @@
               <option>Puppy Intro</option>
               <option>Nail Trim</option>
             </select>
+            <select class="select" name="groomer" required>
+              <option value="">Preferred groomer</option>
+              <option>Any available</option>
+              <option>Maria</option>
+              <option>Jess</option>
+              <option>Andre</option>
+            </select>
             <input class="field" type="date" name="date" required>
             <input class="field" type="time" name="time" required>
-            <textarea class="textarea full" name="notes" placeholder="Notes"></textarea>
+            <input class="field" type="tel" name="phone" placeholder="Phone" required>
+            <textarea class="textarea full" name="notes" placeholder="Behavior notes, coat condition, or special requests"></textarea>
             <button class="btn full" type="submit">Request Booking</button>
           </form>
           <div class="confirm" id="confirm-box"></div>
@@ -260,21 +346,110 @@
   </div>
 
   <script>
+    const appointments = [
+      { time: '10:00', pet: 'Bella', status: 'Confirmed', detail: 'Bath & Brush · Maria', riskScore: 12 },
+      { time: '11:30', pet: 'Max', status: 'High Risk', detail: 'Full Groom · New client', riskScore: 82 },
+      { time: '1:00', pet: 'Charlie', status: 'Confirmed', detail: 'Nail Trim · Andre', riskScore: 9 },
+      { time: '3:30', pet: 'Luna', status: 'Pending', detail: 'Puppy Intro · Jess', riskScore: 36 }
+    ];
+
+    const waitlist = [
+      { pet: 'Coco', request: '2:00 PM opening', contact: '(555) 214-1298' },
+      { pet: 'Rocky', request: 'Saturday bath slot', contact: '(555) 332-8814' }
+    ];
+
+    const appointmentsList = document.getElementById('appointments-list');
+    const scoreList = document.getElementById('score-list');
+    const waitlistList = document.getElementById('waitlist-list');
+
+    function badgeClass(status) {
+      if (status === 'Confirmed') return 'badge badge-confirmed';
+      if (status === 'Pending') return 'badge badge-pending';
+      return 'badge badge-risk';
+    }
+
+    function renderDashboard() {
+      appointmentsList.innerHTML = appointments.map((item) => `
+        <div class="appointment-item">
+          <div>
+            <strong>${item.time} | ${item.pet}</strong>
+            <div class="appointment-meta">${item.detail}</div>
+          </div>
+          <div class="${badgeClass(item.status)}">${item.status === 'High Risk' ? 'High Risk ⚠' : item.status}</div>
+        </div>
+      `).join('');
+
+      scoreList.innerHTML = appointments
+        .slice()
+        .sort((a, b) => b.riskScore - a.riskScore)
+        .map((item) => `
+          <div class="score-item">
+            <div>
+              <span>${item.pet}</span>
+              <strong>${item.status === 'High Risk' ? 'Needs review before confirmation' : 'Low operational risk'}</strong>
+              <div class="appointment-meta">${item.detail}</div>
+            </div>
+            <div class="score-pill">${item.riskScore}</div>
+          </div>
+        `).join('');
+
+      waitlistList.innerHTML = waitlist.map((item) => `
+        <div class="waitlist-item">
+          <div>
+            <strong>${item.pet}</strong>
+            <div class="waitlist-meta">${item.request}</div>
+          </div>
+          <div class="waitlist-meta">${item.contact}</div>
+        </div>
+      `).join('');
+
+      const confirmed = appointments.filter((item) => item.status === 'Confirmed').length;
+      const pending = appointments.filter((item) => item.status === 'Pending').length;
+      const risk = appointments.filter((item) => item.riskScore >= 70).length;
+
+      document.getElementById('stat-bookings').textContent = String(appointments.length);
+      document.getElementById('stat-risk').textContent = String(risk);
+      document.getElementById('stat-confirmed').textContent = String(confirmed);
+      document.getElementById('stat-pending').textContent = String(pending);
+      document.getElementById('stat-waitlist').textContent = String(waitlist.length);
+    }
+
+    renderDashboard();
+
     const form = document.getElementById('booking-form');
     const confirmBox = document.getElementById('confirm-box');
 
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       const data = new FormData(form);
-      const owner = data.get('owner');
-      const pet = data.get('pet');
+      const petName = data.get('petName');
+      const petType = data.get('petType');
+      const breed = data.get('breed');
       const service = data.get('service');
+      const groomer = data.get('groomer');
       const date = data.get('date');
       const time = data.get('time');
+      const phone = data.get('phone');
+      const notes = String(data.get('notes') || '').trim();
+
+      const riskScore = notes.length > 80 ? 44 : 18;
+      appointments.push({
+        time,
+        pet: petName,
+        status: 'Pending',
+        detail: `${service} · ${groomer} · ${breed}`,
+        riskScore
+      });
+
+      renderDashboard();
 
       confirmBox.innerHTML = `
-        <strong>Request received.</strong><br><br>
-        Thanks ${owner}. We got your booking request for <strong>${pet}</strong> (${service}) on <strong>${date}</strong> at <strong>${time}</strong>.
+        <strong>Booking request received.</strong><br><br>
+        ${petName} (${petType}, ${breed}) has been added for <strong>${date}</strong> at <strong>${time}</strong>.<br>
+        Service: <strong>${service}</strong><br>
+        Preferred groomer: <strong>${groomer}</strong><br>
+        Contact: <strong>${phone}</strong><br><br>
+        Status: <strong>Pending confirmation</strong>
       `;
       confirmBox.classList.add('show');
       form.reset();
