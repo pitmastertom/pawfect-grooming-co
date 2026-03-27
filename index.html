@@ -37,116 +37,118 @@
     img { max-width: 100%; display: block; }
     a { text-decoration: none; color: inherit; }
     button, input, textarea, select { font: inherit; }
-    .shell { width: min(1180px, calc(100% - 24px)); margin: 0 auto; padding: 18px 0 42px; }
+    .shell { width: min(1180px, calc(100% - 24px)); margin: 0 auto; padding: 14px 0 34px; }
     .glass { border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow); backdrop-filter: blur(14px); }
     .topbar {
-      position: sticky; top: 12px; z-index: 50;
+      position: sticky; top: 10px; z-index: 50;
       display:flex; align-items:center; justify-content:space-between; gap:16px;
-      padding: 16px 18px; border-radius: 22px;
+      padding: 14px 16px; border-radius: 20px;
     }
-    .brand { display:flex; align-items:center; gap:12px; }
+    .brand { display:flex; align-items:center; gap:12px; min-width: 0; }
     .brand-mark {
-      width:48px; height:48px; border-radius:16px; display:grid; place-items:center;
+      width:44px; height:44px; border-radius:14px; display:grid; place-items:center;
       background: linear-gradient(145deg, rgba(234,122,88,0.18), rgba(255,255,255,0.9));
-      color: var(--accent); font-size: 1.35rem;
+      color: var(--accent); font-size: 1.25rem; flex: 0 0 auto;
     }
     .brand-copy strong, h1, h2, h3 { font-family: Fraunces, serif; }
-    .brand-copy strong { display:block; font-size: 1.28rem; }
-    .brand-copy span { color: var(--muted); font-size: 0.9rem; }
-    .nav { display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
-    .nav a { color: var(--muted); font-size:0.95rem; }
+    .brand-copy strong { display:block; font-size: 1.15rem; }
+    .brand-copy span { color: var(--muted); font-size: 0.86rem; }
+    .nav { display:flex; align-items:center; gap:12px; flex-wrap:wrap; justify-content:flex-end; }
+    .nav a { color: var(--muted); font-size:0.93rem; }
     .nav .cta, .btn {
       background: var(--ink); color:#fff; padding: 12px 18px; border-radius: 999px; border:0; cursor:pointer;
     }
     .hero {
-      margin-top: 18px;
-      display:grid; grid-template-columns: 1.02fr 0.98fr; gap:18px;
+      margin-top: 16px;
+      display:grid; grid-template-columns: 1fr 0.95fr; gap:16px;
+      align-items: stretch;
     }
-    .hero-card { border-radius: 34px; padding: 28px; }
+    .hero-card { border-radius: 30px; padding: 24px; }
     .eyebrow {
-      display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px;
-      background: rgba(255,255,255,0.76); color: var(--muted); border:1px solid var(--line); font-size: 0.84rem;
+      display:inline-flex; align-items:center; gap:10px; padding:9px 13px; border-radius:999px;
+      background: rgba(255,255,255,0.76); color: var(--muted); border:1px solid var(--line); font-size: 0.82rem;
     }
     .dot { width:8px; height:8px; border-radius:50%; background: var(--accent); }
-    h1 { font-size: clamp(2.8rem, 6vw, 4.8rem); line-height: 0.92; letter-spacing: -0.05em; margin-top: 22px; max-width: 9ch; }
-    .hero-copy { color: var(--muted); line-height: 1.75; margin-top: 16px; max-width: 50ch; }
-    .hero-actions { margin-top: 22px; display:flex; gap:12px; flex-wrap:wrap; }
+    h1 { font-size: clamp(2.4rem, 6vw, 4.4rem); line-height: 0.94; letter-spacing: -0.05em; margin-top: 18px; max-width: 9ch; }
+    .hero-copy { color: var(--muted); line-height: 1.7; margin-top: 14px; max-width: 50ch; }
+    .hero-actions { margin-top: 18px; display:flex; gap:12px; flex-wrap:wrap; }
     .btn-secondary {
       background: rgba(255,255,255,0.84); border:1px solid var(--line); color: var(--ink);
       padding: 12px 18px; border-radius: 999px;
     }
-    .quick-points { margin-top: 24px; display:grid; grid-template-columns: repeat(3,1fr); gap:12px; }
+    .quick-points { margin-top: 18px; display:grid; grid-template-columns: repeat(3,1fr); gap:12px; }
     .mini {
-      border-radius: 22px; padding: 16px; background: rgba(255,255,255,0.82); border:1px solid var(--line);
+      border-radius: 20px; padding: 15px; background: rgba(255,255,255,0.82); border:1px solid var(--line);
     }
-    .mini strong { display:block; font-size:1.35rem; }
-    .mini span { display:block; margin-top:8px; color: var(--muted); font-size:0.9rem; }
+    .mini strong { display:block; font-size:1.1rem; }
+    .mini span { display:block; margin-top:7px; color: var(--muted); font-size:0.88rem; }
     .visual-wrap { display:grid; gap:16px; }
-    .visual-main { border-radius: 34px; overflow:hidden; min-height: 100%; position: relative; }
-    .visual-main img { width:100%; height:100%; min-height: 520px; object-fit:cover; }
+    .visual-main { border-radius: 30px; overflow:hidden; min-height: 100%; position: relative; }
+    .visual-main img { width:100%; height:100%; min-height: 420px; object-fit:cover; }
     .floating-note {
-      position:absolute; left:18px; right:18px; bottom:18px; padding: 18px; border-radius: 24px;
+      position:absolute; left:16px; right:16px; bottom:16px; padding: 16px; border-radius: 22px;
       background: rgba(255,255,255,0.84); border:1px solid rgba(36,25,21,0.08); backdrop-filter: blur(10px);
     }
-    .floating-note p { color: var(--muted); margin-top: 8px; line-height: 1.65; }
-    .ticker-section { margin-top: 22px; overflow:hidden; }
+    .floating-note p { color: var(--muted); margin-top: 8px; line-height: 1.6; }
+    .ticker-section { margin-top: 18px; overflow:hidden; }
     .ticker {
-      display:flex; gap:18px; width:max-content; animation: slide 30s linear infinite;
+      display:flex; gap:14px; width:max-content; animation: slide 30s linear infinite;
     }
     .ticker-card {
-      width: 280px; height: 220px; border-radius: 26px; overflow:hidden; flex: 0 0 auto;
+      width: 240px; height: 190px; border-radius: 24px; overflow:hidden; flex: 0 0 auto;
       border:1px solid var(--line); box-shadow: var(--shadow);
     }
     .ticker-card img { width:100%; height:100%; object-fit:cover; }
-    .sections { margin-top: 22px; display:grid; gap:22px; }
+    .sections { margin-top: 18px; display:grid; gap:18px; }
     .strip {
-      border-radius: 30px; padding: 22px; background:
+      border-radius: 28px; padding: 20px; background:
       linear-gradient(135deg, rgba(255,255,255,0.86), rgba(255,246,240,0.92));
     }
-    .section-heading { display:flex; justify-content:space-between; align-items:end; gap:16px; margin-bottom: 16px; }
-    .section-heading p { color: var(--muted); max-width: 42ch; line-height: 1.7; }
-    h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 0.98; }
-    .services { display:grid; grid-template-columns: repeat(4,1fr); gap:14px; }
+    .section-heading { display:flex; justify-content:space-between; align-items:end; gap:16px; margin-bottom: 14px; }
+    .section-heading p { color: var(--muted); max-width: 42ch; line-height: 1.65; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 0.98; }
+    .services { display:grid; grid-template-columns: repeat(4,1fr); gap:12px; }
     .service {
-      border-radius: 24px; padding: 20px; background: var(--surface-strong); border:1px solid var(--line);
+      border-radius: 22px; padding: 18px; background: var(--surface-strong); border:1px solid var(--line);
     }
-    .service p { margin-top: 8px; color: var(--muted); line-height: 1.6; }
-    .service .price { margin-top: 14px; color: var(--accent); font-weight: 700; }
-    .contact-booking { display:grid; grid-template-columns: 0.9fr 1.1fr; gap:18px; }
-    .panel { border-radius: 30px; padding: 22px; }
-    .contact-grid, .stat-grid, .appointment-list, .waitlist, .slots-grid { display:grid; gap:12px; margin-top: 16px; }
+    .service p { margin-top: 8px; color: var(--muted); line-height: 1.55; }
+    .service .price { margin-top: 12px; color: var(--accent); font-weight: 700; }
+    .contact-booking { display:grid; grid-template-columns: 0.88fr 1.12fr; gap:18px; }
+    .panel { border-radius: 28px; padding: 20px; }
+    .contact-grid, .stat-grid, .appointment-list, .waitlist, .slots-grid { display:grid; gap:12px; margin-top: 14px; }
     .contact-box, .stat-card, .appointment-item, .waitlist-item, .slot-card {
-      border-radius: 20px; padding: 16px; background: rgba(255,255,255,0.9); border:1px solid var(--line);
+      border-radius: 18px; padding: 15px; background: rgba(255,255,255,0.9); border:1px solid var(--line);
     }
-    .contact-box span, .stat-card span, .slot-card span { display:block; color: var(--muted); font-size: 0.9rem; margin-bottom: 6px; }
-    .booking-grid { display:grid; grid-template-columns: repeat(2,1fr); gap:12px; margin-top: 16px; }
+    .contact-box span, .stat-card span, .slot-card span { display:block; color: var(--muted); font-size: 0.88rem; margin-bottom: 6px; }
+    .booking-grid { display:grid; grid-template-columns: repeat(2,1fr); gap:12px; margin-top: 14px; }
     .field, .select, .textarea {
-      width:100%; border-radius: 18px; border:1px solid var(--line); background:#fff; padding: 14px 15px; outline:none;
+      width:100%; border-radius: 16px; border:1px solid var(--line); background:#fff; padding: 14px 15px; outline:none;
     }
-    .textarea { min-height: 110px; resize: vertical; }
+    .textarea { min-height: 96px; resize: vertical; }
     .full { grid-column: 1 / -1; }
     .confirm {
-      margin-top: 14px; padding: 16px 18px; border-radius: 20px; background: rgba(31,143,95,0.1);
+      margin-top: 14px; padding: 16px 18px; border-radius: 18px; background: rgba(31,143,95,0.1);
       color: var(--success); border:1px solid rgba(31,143,95,0.18); display:none;
     }
     .confirm.show { display:block; }
-    .tiny { color: var(--muted); font-size: 0.92rem; line-height: 1.65; }
-    .dashboard-grid { display:grid; grid-template-columns: 1.05fr 0.95fr; gap:18px; }
+    .tiny { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+    .dashboard-grid { display:grid; grid-template-columns: 1.02fr 0.98fr; gap:18px; }
     .stat-grid { grid-template-columns: repeat(2, 1fr); }
-    .stat-card strong { font-size: 1.8rem; display:block; }
+    .stat-card strong { font-size: 1.7rem; display:block; }
     .appointment-item, .waitlist-item {
       display:flex; justify-content:space-between; align-items:center; gap:12px;
     }
-    .appointment-meta, .waitlist-meta { color: var(--muted); font-size: 0.92rem; margin-top: 4px; }
+    .appointment-meta, .waitlist-meta { color: var(--muted); font-size: 0.9rem; margin-top: 4px; }
     .badge {
       display:inline-flex; align-items:center; gap:8px; padding: 8px 12px; border-radius: 999px;
-      font-size: 0.84rem; font-weight: 600; border:1px solid transparent;
+      font-size: 0.82rem; font-weight: 600; border:1px solid transparent;
     }
     .badge-confirmed { background: rgba(31,143,95,0.1); color: var(--success); border-color: rgba(31,143,95,0.16); }
     .badge-pending { background: rgba(243,181,98,0.16); color: var(--warning); border-color: rgba(194,108,21,0.14); }
     .slots-grid { grid-template-columns: repeat(3, 1fr); }
-    .slot-card strong { font-size: 1.2rem; }
-    .footer { margin-top: 22px; text-align:center; color: var(--muted); padding: 12px; }
+    .slot-card strong { font-size: 1.1rem; }
+    .mobile-bar { display: none; }
+    .footer { margin-top: 18px; text-align:center; color: var(--muted); padding: 10px; }
     @keyframes slide {
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
@@ -154,15 +156,134 @@
     @media (max-width: 1020px) {
       .hero, .contact-booking, .services, .dashboard-grid, .slots-grid { grid-template-columns: 1fr; }
       .quick-points, .stat-grid { grid-template-columns: 1fr; }
+      .visual-main img { min-height: 340px; }
     }
     @media (max-width: 760px) {
-      .shell { width: min(100% - 18px, 1180px); padding-bottom: 34px; }
-      .topbar, .hero-card, .panel, .strip { border-radius: 24px; }
-      .booking-grid, .services { grid-template-columns: 1fr; }
-      h1 { font-size: clamp(2.25rem, 14vw, 3.7rem); }
-      .visual-main img { min-height: 360px; }
-      .ticker-card { width: 220px; height: 180px; }
-      .appointment-item, .waitlist-item { flex-direction: column; align-items: flex-start; }
+      .shell { width: min(100% - 14px, 1180px); padding: 10px 0 92px; }
+      .topbar {
+        top: 8px; gap: 10px; padding: 12px 14px; border-radius: 18px;
+        align-items: center;
+      }
+      .brand-copy span { display: none; }
+      .brand-copy strong { font-size: 1rem; line-height: 1.1; }
+      .nav {
+        gap: 8px;
+        justify-content: flex-end;
+      }
+      .nav a:not(.cta) { display: none; }
+      .nav .cta {
+        padding: 10px 14px;
+        font-size: 0.88rem;
+      }
+      .hero-card, .panel, .strip, .visual-main { border-radius: 22px; }
+      .hero-card, .panel, .strip { padding: 16px; }
+      h1 {
+        font-size: clamp(2rem, 11vw, 3rem);
+        max-width: 11ch;
+        margin-top: 14px;
+      }
+      .hero-copy {
+        margin-top: 12px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      .hero-actions {
+        margin-top: 14px;
+        flex-direction: column;
+      }
+      .hero-actions .btn,
+      .hero-actions .btn-secondary,
+      .booking-grid .btn {
+        width: 100%;
+        text-align: center;
+      }
+      .quick-points {
+        grid-template-columns: 1fr;
+        margin-top: 14px;
+      }
+      .mini strong { font-size: 1rem; }
+      .visual-wrap {
+        order: -1;
+      }
+      .visual-main img {
+        min-height: 220px;
+        max-height: 220px;
+      }
+      .floating-note {
+        position: static;
+        margin: 12px;
+        border-radius: 18px;
+      }
+      .ticker-section {
+        margin-top: 14px;
+      }
+      .ticker {
+        animation: none;
+        overflow-x: auto;
+        width: 100%;
+        padding-bottom: 6px;
+        scroll-snap-type: x mandatory;
+      }
+      .ticker-card {
+        width: 180px;
+        height: 140px;
+        scroll-snap-align: start;
+      }
+      .sections {
+        gap: 14px;
+        margin-top: 14px;
+      }
+      .section-heading {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .services,
+      .booking-grid,
+      .slots-grid,
+      .stat-grid {
+        grid-template-columns: 1fr;
+      }
+      .appointment-item,
+      .waitlist-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .contact-grid,
+      .appointment-list,
+      .waitlist,
+      .slots-grid {
+        margin-top: 12px;
+      }
+      .mobile-bar {
+        display: flex;
+        position: fixed;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        z-index: 60;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 18px;
+        background: rgba(255,255,255,0.92);
+        border: 1px solid var(--line);
+        box-shadow: 0 16px 40px rgba(91,57,42,0.16);
+        backdrop-filter: blur(12px);
+      }
+      .mobile-bar a {
+        flex: 1;
+        text-align: center;
+        padding: 12px 14px;
+        border-radius: 999px;
+        font-weight: 600;
+      }
+      .mobile-bar .primary {
+        background: var(--ink);
+        color: white;
+      }
+      .mobile-bar .secondary {
+        background: rgba(36,25,21,0.06);
+      }
     }
   </style>
 </head>
@@ -178,9 +299,9 @@
       </div>
       <nav class="nav">
         <a href="#services">Services</a>
-        <a href="#dashboard">Dashboard</a>
+        <a href="#dashboard">Availability</a>
         <a href="#contact">Contact</a>
-        <a href="#booking" class="cta">Book Grooming Appointment</a>
+        <a href="#booking" class="cta">Book Now</a>
       </nav>
     </header>
 
@@ -188,10 +309,10 @@
       <div class="hero-card glass">
         <div class="eyebrow"><span class="dot"></span>Dog grooming made simple</div>
         <h1>Fresh looks and faster bookings.</h1>
-        <p class="hero-copy">A polished site that helps customers book quickly, see open availability, and get instant confirmation without the usual Facebook message back-and-forth.</p>
+        <p class="hero-copy">A polished site that helps customers book quickly, see open availability, and get instant confirmation without the Facebook message back-and-forth.</p>
         <div class="hero-actions">
           <a class="btn" href="#booking">Book Grooming Appointment</a>
-          <a class="btn-secondary" href="#dashboard">View Today’s Schedule</a>
+          <a class="btn-secondary" href="#dashboard">See Available Slots</a>
         </div>
         <div class="quick-points">
           <div class="mini"><strong>Available Slots</strong><span>Creates urgency for today</span></div>
@@ -227,7 +348,7 @@
       <section id="services" class="strip glass">
         <div class="section-heading">
           <div><h2>Services</h2></div>
-          <p>Simple options customers can understand fast, with a booking flow that makes scheduling easier for everyone.</p>
+          <p>Clear service options customers can understand quickly.</p>
         </div>
         <div class="services">
           <article class="service"><h3>Bath & Brush</h3><p>Clean, dry, brushed.</p><div class="price">From $35</div></article>
@@ -239,12 +360,12 @@
 
       <section id="dashboard" class="strip glass">
         <div class="section-heading">
-          <div><h2>Admin Dashboard</h2></div>
-          <p>A simple salon view for today’s bookings, confirmed clients, pending appointments, and waitlist demand.</p>
+          <div><h2>Available Slots Today</h2></div>
+          <p>A simple salon view for today’s bookings, open spots, and waitlist demand.</p>
         </div>
         <div class="dashboard-grid">
           <div class="panel" style="background: rgba(255,255,255,0.58); border:1px solid var(--line);">
-            <div class="eyebrow"><span class="dot"></span>Daily overview</div>
+            <div class="eyebrow"><span class="dot"></span>Today’s appointments</div>
             <div class="stat-grid">
               <div class="stat-card">
                 <span>Today’s bookings</span>
@@ -264,15 +385,13 @@
               </div>
             </div>
 
-            <div class="appointment-list" style="margin-top: 18px;">
-              <h3>Today’s Appointments</h3>
+            <div class="appointment-list" style="margin-top: 16px;">
               <div id="appointments-list"></div>
             </div>
           </div>
 
           <div class="panel" style="background: rgba(255,255,255,0.58); border:1px solid var(--line);">
-            <div class="eyebrow"><span class="dot"></span>Available Slots Today</div>
-            <p class="tiny" style="margin-top: 14px;">Show customers there’s still room today while making the remaining openings feel limited.</p>
+            <div class="eyebrow"><span class="dot"></span>Book while spots are open</div>
             <div class="slots-grid" id="slots-list"></div>
             <div class="waitlist">
               <h3>Waitlist Clients</h3>
@@ -285,20 +404,20 @@
       <section class="contact-booking">
         <div id="contact" class="panel glass">
           <div class="eyebrow"><span class="dot"></span>Contact</div>
-          <h2 style="margin-top:14px;">Easy ways to reach you.</h2>
+          <h2 style="margin-top:12px;">Easy ways to reach you.</h2>
           <div class="contact-grid">
             <div class="contact-box"><span>Phone</span><strong>(555) 123-4567</strong></div>
             <div class="contact-box"><span>Email</span><strong>hello@k9kutsgrooming.com</strong></div>
             <div class="contact-box"><span>Address</span><strong>123 Main Street, Your City</strong></div>
             <div class="contact-box"><span>Hours</span><strong>Mon–Sat · 9:00 AM – 6:00 PM</strong></div>
           </div>
-          <p class="tiny" style="margin-top: 16px;">The site works as both a clean marketing presence and a practical booking tool.</p>
+          <p class="tiny" style="margin-top: 14px;">A clean marketing presence and a practical booking tool in one.</p>
         </div>
 
         <div id="booking" class="panel glass">
           <div class="eyebrow"><span class="dot"></span>Booking</div>
-          <h2 style="margin-top:14px;">Book an appointment</h2>
-          <p class="tiny" style="margin-top:10px;">Customers pick a service, choose a time, and get instant booking confirmation on the page.</p>
+          <h2 style="margin-top:12px;">Book an appointment</h2>
+          <p class="tiny" style="margin-top:8px;">Choose a service, pick a time, and get instant confirmation on the page.</p>
           <form id="booking-form" class="booking-grid">
             <input class="field" type="text" name="petName" placeholder="Pet name" required>
             <select class="select" name="petType" required>
@@ -334,6 +453,11 @@
     </div>
 
     <footer class="footer">K-9 Kuts Grooming</footer>
+  </div>
+
+  <div class="mobile-bar">
+    <a href="#dashboard" class="secondary">Slots</a>
+    <a href="#booking" class="primary">Book Now</a>
   </div>
 
   <script>
